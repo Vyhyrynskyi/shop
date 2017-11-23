@@ -16,27 +16,17 @@
 <body>
 <div class="center">
 
-    <form:form modelAttribute="searchForm" cssClass="search-box">
-        <form:input path="searchText" />
-        <input type="submit" class="btn btn-success" value="Search" />
-    </form:form>
-
-    <ul class="prod-list">
+    <ul class="cart-list">
     <c:forEach items="${products}" var="prod">
-        <li class="prod-item">
-            <h3>${prod.title} ( ${prod.balance} )</h3>
-            <p>${prod.description}</p>
-            <div class="action-box">
-                <a href="/cart?add&prodId=${prod.id}" class="btn btn-info" role="button">Add to Cart</a>
-                <a href="/order?prodId=${prod.id}" class="btn btn-info" role="button">Buy</a>
-                <a href="/product/${prod.id}" class="btn btn-warning" role="button">Edit</a>
-            </div>
+        <li class="cart-item">
+            <h3>${prod.title}</h3>
+            <a href="/cart?delete&prodId=${prod.id}" class="btn btn-danger" role="button">Remove</a>
         </li>
     </c:forEach>
     </ul>
 
     <div class="action-box">
-        <a href="/product" class="btn btn-warning" role="button">New product</a>
+        <a href="/products" class="btn btn-info" role="button">Back to products</a>
     </div>
 
 </div>
