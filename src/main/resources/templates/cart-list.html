@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: linkInclusions">
+	<title>Your cart</title>
+</head>
+<body>
+	<div class="center-vertically">
+
+		<ul class="cart-list" th:each="prod : ${products}">
+			<li class="cart-item">
+				<h3 th:text="${prod.title}"></h3> <a th:href="@{'/cart'(delete,prodId=${prod.id})}"
+				class="btn btn-danger" role="button">Remove</a>
+			</li>
+		</ul>
+
+		<div class="action-box">
+			<a href="/products" class="btn btn-info" role="button">Back to
+				products</a>
+		</div>
+
+	</div>
+</body>
+</html>

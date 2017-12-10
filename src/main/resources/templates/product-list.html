@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments :: linkInclusions">
+    <title>Product List</title>
+</head>
+<body>
+
+
+	<div class="center">
+    	<form modelAttribute="searchForm" th:object="${searchForm}" method="post" cssClass="search-box">
+       		<input type="text" th:field="*{searchText}"/>
+       		<input type="submit" class="btn btn-success" value="Search"/>
+    	</form>
+	</div>
+
+	<div class="center">
+    	<ul class="prod-list" th:each="prod : ${products}" >
+        	    <li class="prod-item">
+            	    <h3 th:text="|${prod.title} ( ${prod.balance} )|"></h3>
+                	<p th:text="${prod.description}"></p>
+                	<div class="action-box" sec:authorize="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')">
+                	
+						<input type="number" name="amount" min="1" th:attr="max=${prod.balance}" step="1" value="1"/>
+                   		<a th:href="@{'cart'(add,prodId=${prod.id},amount=${amount})}" class="btn btn-info" role="button">Add to Cart</a>
+                    	<a th:href="@{'order'(prodId=${prod.id},amount=${amount})}" class="btn btn-info" role="button">Buy</a>
+                    	<a th:href="@{'product/'+|${prod.id}|}" sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-warning" role="button">Edit</a>
+                	</div>
+            	</li>
+    	</ul>
+	</div>
+	
+	<footer class="container-fluid">
+		<div class="action-box">
+			<a href="/product" sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-warning" role="button">New product</a>
+			<a href="/login" sec:authorize="hasRole('ANONYMOUS')" class="btn btn-warning" role="button">Login</a>
+			<a href="/logout" sec:authorize="!hasRole('ROLE_ANONYMOUS')" class="btn btn-warning" role="button">Logout</a>
+		</div>
+	</footer>
+	
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments :: linkInclusions">
+<title>User signup</title>
+</head>
+<body class="center center-vertically">
+	<div>
+	 <form th:modelAttribute="${userForm}" th:object="${userForm}" method="post" cssClass="search-box">
+        <input th:field="*{login}" class="center"/>
+        <input th:field="*{password}" class="center"/>
+
+       <select th:field="*{role}">
+            <option th:each="role :${T(edu.karazin.shop.model.Role).values()}" th:value="${role}" th:text="${role}"/>
+        </select>
+        <input type="submit" class="btn btn-success" value="create" />
+    </form>
+	</div>
+</body>
+</html>

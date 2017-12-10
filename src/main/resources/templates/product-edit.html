@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments :: linkInclusions">
+<title>Product Edit</title>
+</head>
+<body>
+	<div class="center">
+
+		<form th:modelAttribute="${product}" th:object="${product}" method="post">
+			<fieldset>
+				<label>Title:</label>
+				<input th:field="*{title}" />
+
+				<label>Description:</label>
+				<input th:field="*{description}" />
+
+				<label>Cost:</label>
+				<input th:field="*{cost}" />
+				
+				<label>Balance:</label>
+				<input th:field="*{balance}" />
+			</fieldset>
+
+			<input type="submit" value="Save" />
+		</form>
+	</div>
+</body>
+</html>
