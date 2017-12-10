@@ -11,4 +11,8 @@ public class Cart {
 	private long cartId;
 	private long cartProductId;
 	private long productsAmount;
+	
+	public Cart() {
+		
+	}
 }

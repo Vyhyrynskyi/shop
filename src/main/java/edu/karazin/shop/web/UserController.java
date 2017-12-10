@@ -1,6 +1,6 @@
 package edu.karazin.shop.web;
 
-import edu.karazin.shop.model.Role;
+import edu.karazin.shop.entity.Role;
 import edu.karazin.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

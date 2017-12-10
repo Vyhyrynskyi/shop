@@ -12,6 +12,10 @@ public class CartProduct extends Product {
 	private long productId;
 	private long purchasePrice;
 	
+	public CartProduct() {
+		
+	}
+	
 	public CartProduct(Product product, long purchasePrice) {
 		super(product.getId(),product.getTitle(),product.getDescription());
 		this.purchasePrice=purchasePrice;

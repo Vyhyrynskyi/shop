@@ -1,7 +1,8 @@
 package edu.karazin.shop.dao;
 
-import edu.karazin.shop.model.User;
 import org.springframework.data.repository.CrudRepository;
+
+import edu.karazin.shop.entity.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 

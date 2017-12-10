@@ -1,4 +1,4 @@
-package edu.karazin.shop.model;
+package edu.karazin.shop.entity;
 
 import javax.persistence.*;
 
@@ -11,8 +11,20 @@ public class User {
 
     private String login;
 
+    //как работают Lazy поля в спринге?
+    
     private String password;
-
+    //TODO add to DAO and constructor
+    private String firstName;//from here
+    private String lastName;
+    private String email;
+    
+    
+    //OneBox - крутая тема
+    
+    //Admin может пополнить счёт пользователю
+    private Long balance;//to here
+    
     @Enumerated(EnumType.STRING)
     private Role role;
 

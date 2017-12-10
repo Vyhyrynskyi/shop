@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.karazin.shop.model.Product;
+import edu.karazin.shop.entity.Product;
 import edu.karazin.shop.service.ProductService;
 
 @Controller
@@ -58,4 +58,11 @@ public class ProductEditController {
 		productService.updateProduct(product);
 		return "redirect:/products";
 	}
+	
+	/*@RequestMapping(method = RequestMethod.POST)
+	public String removeProduct(Model model, Product product) {
+		log.info("Remove product");
+		productService.removeProduct(product.getId());
+		return "redirect:/products";
+	}*/
 }

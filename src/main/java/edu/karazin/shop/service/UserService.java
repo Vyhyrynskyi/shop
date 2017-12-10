@@ -1,6 +1,6 @@
 package edu.karazin.shop.service;
 
-import edu.karazin.shop.model.User;
+import edu.karazin.shop.entity.User;
 
 public interface UserService {
 

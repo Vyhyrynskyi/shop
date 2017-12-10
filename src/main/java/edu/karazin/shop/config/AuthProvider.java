@@ -1,7 +1,7 @@
 package edu.karazin.shop.config;
 
-import edu.karazin.shop.model.Role;
-import edu.karazin.shop.model.User;
+import edu.karazin.shop.entity.Role;
+import edu.karazin.shop.entity.User;
 import edu.karazin.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;

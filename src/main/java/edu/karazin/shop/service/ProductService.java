@@ -2,7 +2,7 @@ package edu.karazin.shop.service;
 
 import java.util.List;
 
-import edu.karazin.shop.model.Product;
+import edu.karazin.shop.entity.Product;
 
 public interface ProductService {
 

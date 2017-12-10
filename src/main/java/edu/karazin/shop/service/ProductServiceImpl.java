@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.karazin.shop.dao.ProductDao;
-import edu.karazin.shop.model.Product;
+import edu.karazin.shop.entity.Product;
 
 @Service
 public class ProductServiceImpl implements ProductService {

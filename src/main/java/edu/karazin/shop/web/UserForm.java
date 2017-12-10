@@ -1,10 +1,12 @@
 package edu.karazin.shop.web;
 
-import edu.karazin.shop.model.Role;
-import edu.karazin.shop.model.User;
+import edu.karazin.shop.entity.Role;
+import edu.karazin.shop.entity.User;
 
-public class UserForm extends LoginForm {
+public class UserForm {
     private Role role;
+    private String login;
+    private String password;
 
     public UserForm() {
     }
@@ -14,7 +16,8 @@ public class UserForm extends LoginForm {
     }
 
     public UserForm(String login, String password, Role role) {
-        super(login, password);
+        this.login = login;
+        this.password = password;
         this.role = role;
     }
 
@@ -26,7 +29,23 @@ public class UserForm extends LoginForm {
         this.role = role;
     }
 
-    public User convertToUser() {
+    public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public User convertToUser() {
         return new User(getLogin(), getPassword(), getRole());
     }
 }

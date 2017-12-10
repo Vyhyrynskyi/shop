@@ -8,7 +8,8 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
-import edu.karazin.shop.model.Product;
+import edu.karazin.shop.entity.CartProduct;
+import edu.karazin.shop.entity.Product;
 
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.INTERFACES)
