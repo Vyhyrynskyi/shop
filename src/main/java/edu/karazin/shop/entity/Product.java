@@ -12,13 +12,13 @@ public class Product {
 	private Long id;
 	private String title;
 	private String description;
-	//image blob into DB
+	//TODO image blob into DB
 	private byte[] image;
 	private String imageMimeType;
 	private long cost;
 	private int balance;
-	//Products are not removed, they are only turned off.
-	private boolean isEnabled;
+	//TODO Products are not removed, they are only turned off.
+	private boolean isEnabled = true;
 
 	public Product() {
 	}
@@ -39,6 +39,7 @@ public class Product {
 		this.imageMimeType = imageMimeType;
 		this.cost = cost;
 		this.balance = balance;
+		this.isEnabled = isEnabled;
 	}
 
 	public Long getId() {
@@ -98,7 +99,7 @@ public class Product {
 	}
 
 
-	public boolean getIsEnabled() {
+	public boolean isEnabled() {
 		return isEnabled;
 	}
 

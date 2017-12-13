@@ -9,6 +9,7 @@ public interface ProductService {
 	Product getProduct(Long id);
 
 	List<Product> searchProducts(String searchText);
+	//List<Product> searchEnabledProducts(String searchText);
 
 	Long addProduct(Product prod);
 

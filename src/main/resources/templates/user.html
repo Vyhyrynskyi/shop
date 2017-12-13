@@ -10,7 +10,7 @@
         <input th:field="*{password}" class="center"/>
 
        <select th:field="*{role}">
-            <option th:each="role :${T(edu.karazin.shop.model.Role).values()}" th:value="${role}" th:text="${role}"/>
+            <option th:each="role :${roles}" th:value="${role}" th:text="${role}"/>
         </select>
         <input type="submit" class="btn btn-success" value="create" />
     </form>

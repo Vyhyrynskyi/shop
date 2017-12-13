@@ -27,11 +27,19 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> searchProducts(String searchText) {
 		if (searchText == null || searchText.trim().isEmpty()) {
-			return dao.findAll();
+			return dao.findAllEnabled();
 		}
 		return dao.findByText(searchText);
 	}
-
+	
+	/*@Override
+	public List<Product> searchAllProducts(String searchText) {
+		if (searchText == null || searchText.trim().isEmpty()) {
+			return dao.findAll();
+		}
+		return dao.findByText(searchText);
+	}*/
+	
 	@Override
 	@Transactional
 	public Long addProduct(Product prod) {
@@ -47,6 +55,6 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	@Transactional
 	public void removeProduct(Long id) {
-		dao.delete(id);
+		dao.disable(id);
 	}
 }

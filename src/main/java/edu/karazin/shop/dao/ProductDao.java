@@ -10,9 +10,12 @@ public interface ProductDao {
 
 	List<Product> findByText(String searchText);
 
+	List<Product> findAllEnabled();
+
 	List<Product> findAll();
 
 	Product save(Product prod);
 
-	void delete(Long id);
+	void disable(Long id);
+
 }

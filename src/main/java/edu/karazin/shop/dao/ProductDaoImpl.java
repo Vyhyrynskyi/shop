@@ -22,7 +22,7 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public List<Product> findByText(String searchText) {
-		return em.createQuery("from Product p where p.title like :text or p.description like :text", Product.class)
+		return em.createQuery("from Product p where p.title like :text or p.description like :text and p.isEnabled is true", Product.class)
 				.setParameter("text", "%" + searchText + "%")
 				.getResultList();
 	}
@@ -30,6 +30,12 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<Product> findAll() {
 		return em.createQuery("from Product", Product.class)
+				.getResultList();
+	}
+
+	@Override
+	public List<Product> findAllEnabled() {
+		return em.createQuery("from Product p where p.isEnabled is true", Product.class)
 				.getResultList();
 	}
 
@@ -44,7 +50,10 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public void delete(Long id) {
-		em.remove(findById(id));
+	public void disable(Long id) {
+		Product product = findById(id);
+		product.setIsEnabled(false);
+		em.refresh(product);
 	}
+
 }

@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/product/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/cart/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
                 .antMatchers("/order/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-                //.antMatchers("/user/**").permitAll()
+                .antMatchers("/user/**").access("hasRole('ROLE_ADMIN')")
                 .and()
                 .formLogin().loginPage("/login")
                 .defaultSuccessUrl("/products")

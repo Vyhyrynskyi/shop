@@ -1,32 +1,34 @@
 package edu.karazin.shop.entity;
 
 import javax.persistence.GeneratedValue;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 @Entity
-public class CartProduct extends Product {
+@Table(name = "CartProduct", uniqueConstraints = { @UniqueConstraint(columnNames = { "cartId", "productId" }) })
+public class CartProduct {
 	@Id
 	@GeneratedValue
-	private long cartProductId;
+	@Column (name= "cartId", unique= false)
+	private long cartId;
+	//@Id
 	private long productId;
 	private long purchasePrice;
-	
+	private long purchaseNumber;
+
 	public CartProduct() {
-		
-	}
-	
-	public CartProduct(Product product, long purchasePrice) {
-		super(product.getId(),product.getTitle(),product.getDescription());
-		this.purchasePrice=purchasePrice;
-	}
-	
-	public long getCartProductId() {
-		return cartProductId;
+
 	}
 
-	public void setCartProductId(long cartProductId) {
-		this.cartProductId = cartProductId;
+	public long getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(long cartId) {
+		this.cartId = cartId;
 	}
 
 	public long getProductId() {
@@ -40,15 +42,22 @@ public class CartProduct extends Product {
 	public long getPurchasePrice() {
 		return purchasePrice;
 	}
-	
+
 	public void setPurchasePrice(long purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
-	
-	//TODO implement this method
-	/*@Override
-	public boolean equals(Object obj){
-		return false;
-	}*/
-	
+
+	public long getPurchaseNumber() {
+		return purchaseNumber;
+	}
+
+	public void setPurchaseNumber(long purchaseNumber) {
+		this.purchaseNumber = purchaseNumber;
+	}
+
+	// TODO implement equals() and hashCode() methods
+	/*
+	 * @Override public boolean equals(Object obj){ return false; }
+	 */
+
 }

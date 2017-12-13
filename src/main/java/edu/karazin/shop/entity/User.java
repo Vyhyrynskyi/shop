@@ -1,6 +1,10 @@
 package edu.karazin.shop.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class User {
@@ -11,7 +15,7 @@ public class User {
 
     private String login;
 
-    //как работают Lazy поля в спринге?
+    //XXX как работают Lazy поля в спринге?
     
     private String password;
     //TODO add to DAO and constructor
@@ -22,7 +26,7 @@ public class User {
     
     //OneBox - крутая тема
     
-    //Admin может пополнить счёт пользователю
+    //TODO admin может пополнить счёт пользователю
     private Long balance;//to here
     
     @Enumerated(EnumType.STRING)

@@ -2,9 +2,11 @@ package edu.karazin.shop.service;
 
 import java.util.List;
 
-import edu.karazin.shop.entity.CartProduct;
+import org.springframework.stereotype.Component;
+
 import edu.karazin.shop.entity.Product;
 
+@Component
 public interface CartStore {
 
 	List<Product> getProducts();

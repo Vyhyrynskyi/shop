@@ -16,12 +16,12 @@ import edu.karazin.shop.service.ProductService;
 @RequestMapping("cart")
 public class CartController {
 
-	//при входе в корзину, каждый раз пересчитывать
+	//XXX при входе в корзину, каждый раз пересчитывать
 	
 	private final ProductService productService;
 	private final CartStore cartStore;
 
-	//инжектить через коснтруктор всё
+	//XXX инжектить через коснтруктор всё
 	public CartController(@Autowired ProductService productService, @Autowired CartStore cartStore) {
 		this.productService = productService;
 		this.cartStore = cartStore;
@@ -32,19 +32,19 @@ public class CartController {
 		model.addAttribute("products", cartStore.getProducts());
 		return "cart-list";
 	}
-
+	//FIXME fix product adding to cart
 	@RequestMapping(method = RequestMethod.GET, params = "add")
 	public String addProduct(@RequestParam("prodId") Long prodId, @RequestParam("amount") Long productsAmount, Model model) {
 		Product currentProduct = productService.getProduct(prodId);
 		long purchasePrice = currentProduct.getCost();
-		CartProduct cartProduct = new CartProduct(currentProduct, purchasePrice);
-		cartStore.addProduct(cartProduct);
+		//CartProduct cartProduct = new CartProduct(currentProduct, purchasePrice);
+		cartStore.addProduct(currentProduct);
 		return list(model);
 	}
-
+	//FIXME fix removing from cart
 	@RequestMapping(method = RequestMethod.GET, params = "delete")
 	public String removeProduct(@RequestParam("prodId") Long prodId, Model model) {
-		//cartStore.removeProduct(prodId);
+		cartStore.removeProduct(productService.getProduct(prodId));
 		return list(model);
 	}
 }

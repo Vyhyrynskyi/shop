@@ -54,3 +54,8 @@ body {
 	float: right;
 	margin-left: 10px;
 }
+
+.action-box input[type="number"]{
+	float: left;
+	width: 50px;
+}

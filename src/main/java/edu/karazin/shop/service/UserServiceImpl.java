@@ -4,12 +4,12 @@ import edu.karazin.shop.dao.UserRepository;
 import edu.karazin.shop.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-
+    
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
