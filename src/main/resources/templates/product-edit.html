@@ -6,7 +6,7 @@
 <body>
 	<div class="center">
 
-		<form th:modelAttribute="${product}" th:object="${product}" method="post">
+		<form th:modelAttribute="${product}" th:object="${product}" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<label>Title:</label>
 				<input th:field="*{title}" />
@@ -19,6 +19,10 @@
 				
 				<label>Balance:</label>
 				<input th:field="*{balance}" />
+				
+				<label>Image:</label>
+				<input name="file" type="file" accept="image/*"/>
+				
 			</fieldset>
 
 			<input type="submit" value="Save" />

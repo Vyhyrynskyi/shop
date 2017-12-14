@@ -17,13 +17,15 @@
     	<ul class="prod-list" th:each="prod : ${products}" >
         	    <li class="prod-item">
             	    <h3 th:text="|${prod.title} ( ${prod.balance} )|"></h3>
+            	    <img th:alt="${prod.title}" th:src="|data:image/${prod.imageMimeType};base64,${prod.imageAsString}|"/>
                 	<p th:text="${prod.description}"></p>
                 	<div class="action-box" sec:authorize="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')">
                 	
 						<input type="number" name="amount" min="1" th:attr="max=${prod.balance}" step="1" value="1" onkeyup='checkAmount($(this), event)'/>
-                   		<a th:href="@{'cart'(add,prodId=${prod.id},amount=${amount})}" class="btn btn-info" role="button">Add to Cart</a>
-                    	<a th:href="@{'order'(prodId=${prod.id},amount=${amount})}" class="btn btn-info" role="button">Buy</a>
+                   		<a th:href="@{'cart'(add,prodId=${prod.id})}" class="btn btn-info" onclick="amountToURL($(this))" role="button">Add to Cart</a>
+                    	<a th:href="@{'order'(prodId=${prod.id})}" class="btn btn-info" onclick="amountToURL($(this))" role="button">Buy</a>
                     	<a th:href="@{'product/'+|${prod.id}|}" sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-warning" role="button">Edit</a>
+                    	<form action="/remove" method="post" th:modelAttribute="${prod}" th:obj="${prod}"><input id="delete" action="/remove" method="post" type="submit" class="btn btn-danger" value="Delete"/></form>
                 	</div>
             	</li>
     	</ul>

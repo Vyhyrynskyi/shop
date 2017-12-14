@@ -26,6 +26,15 @@ function checkAmount(element, event) {
 	}
 	element.val(value);
 };
+function amountToURL(element){
+	var parent = element.parent();
+	var amountField = parent.children("input[type=number]");
+	var amount = amountField.val();
+	var oldURL = element.attr("href");
+	var newURL = oldURL + "&amount=" +amount;
+	element.attr("href", newURL);
+	
+}
 
 function validateNumber(evt) {
 	var theEvent = evt || window.event;
