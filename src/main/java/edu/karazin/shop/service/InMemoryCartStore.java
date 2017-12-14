@@ -22,10 +22,7 @@ public class InMemoryCartStore implements CartStore{
 		return products;
 	}
 
-	@Override
-	public void addProduct(CartProduct prod) {
-		products.add(prod);
-	}
+	
 
 	@Override
 	public void removeProduct(CartProduct prod) {
@@ -35,5 +32,10 @@ public class InMemoryCartStore implements CartStore{
 	@Override
 	public void removeAllProducts() {
 		products.clear();
+	}
+
+	@Override
+	public void addProduct(CartProduct prod, long purchaseAmount) {
+		//		
 	}
 }

@@ -1,5 +1,7 @@
 package edu.karazin.shop.service;
 
+import org.springframework.stereotype.Service;
+
 import edu.karazin.shop.dao.CartProductDao;
 import edu.karazin.shop.dao.CartProductDaoImpl;
 import edu.karazin.shop.dao.ProductDao;
@@ -7,6 +9,8 @@ import edu.karazin.shop.dao.ProductDaoImpl;
 import edu.karazin.shop.entity.CartProduct;
 import edu.karazin.shop.entity.Product;
 
+
+@Service
 public class CartProductServiceImpl implements CartProductService {
 
 	private CartProductDao dao = new CartProductDaoImpl();

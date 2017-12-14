@@ -10,7 +10,7 @@ public class UserHistory {
 	@Id
 	private long cartId;
 	private long userId;
-	private Date puchaseDate;
+	private Date purchaseDate;
 	private long totalCost;
 	private boolean isBuyed;
 
@@ -34,12 +34,12 @@ public class UserHistory {
 		this.userId = userId;
 	}
 
-	public Date getPuchaseDate() {
-		return puchaseDate;
+	public Date getPurchaseDate() {
+		return purchaseDate;
 	}
 
 	public void setPuchaseDate(Date puchaseDate) {
-		this.puchaseDate = puchaseDate;
+		this.purchaseDate = puchaseDate;
 	}
 
 	public long getTotalCost() {

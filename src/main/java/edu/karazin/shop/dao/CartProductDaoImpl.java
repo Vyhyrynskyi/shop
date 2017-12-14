@@ -1,5 +1,7 @@
 package edu.karazin.shop.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -37,6 +39,11 @@ public class CartProductDaoImpl implements CartProductDao {
 	@Override
 	public void removeAllProductsFromCart(long cartId) {
 		em.createQuery("delete from CartProduct where cartId = :cartId").setParameter("cartId", cartId);
+	}
+
+	@Override
+	public List<CartProduct> getCartProductsByCartId(long cartId) {
+		return em.createQuery("from CartProduct cp where cp.cartId is :cartId").setParameter("cartId", cartId).getResultList();
 	}
 
 }

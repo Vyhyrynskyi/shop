@@ -1,5 +1,6 @@
 package edu.karazin.shop.service;
 
+
 import edu.karazin.shop.entity.CartProduct;
 
 public interface CartProductService {
@@ -25,9 +26,10 @@ public interface CartProductService {
 	 * @return false, if total number of product to purchase is greater than product
 	 *         balance, otherwise, true.
 	 */
-	public boolean addCartProduct(long cartId, long productId, long purchaseNumber);
+	public boolean addCartProduct(long cartId, long productId, long purchaseNumber);	
 
 	public void removeCartProduct(long cartId, long productId);
 
 	public void refreshPrice(CartProduct cartProduct);
+
 }

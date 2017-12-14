@@ -12,7 +12,7 @@ public interface CartStore {
 
 	List<CartProduct> getProducts();
 
-	void addProduct(CartProduct prod);
+	void addProduct(CartProduct prod, long purchaseAmount);
 
 	void removeProduct(CartProduct prod);
 	void removeAllProducts();
