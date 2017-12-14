@@ -1,8 +1,13 @@
 package edu.karazin.shop.entity;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+
+import org.apache.tomcat.util.codec.binary.Base64;
 
 @Entity
 public class Product {
@@ -12,7 +17,8 @@ public class Product {
 	private Long id;
 	private String title;
 	private String description;
-	//TODO image blob into DB
+	//TODO image lob into DB
+	@Lob
 	private byte[] image;
 	private String imageMimeType;
 	private long cost;
@@ -71,9 +77,23 @@ public class Product {
 	}
 
 	public void setImage(byte[] image) {
-		this.image = image;
+		if(image != null) {
+			this.image = image;
+		}
 	}
-
+	
+	public String getImageAsString() {
+		if(image != null) {
+			byte[] encodedBase64 = Base64.encodeBase64(image);
+			try {
+				return new String(encodedBase64, "UTF-8");
+			}catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		} 
+		return null;
+	}
+	
 	public String getImageMimeType() {
 		return imageMimeType;
 	}

@@ -8,10 +8,11 @@ import javax.persistence.Id;
 @Entity
 public class UserHistory {
 	@Id
-	public long cartId;
-	public long userId;
-	public Date puchaseDate;
-	public long totalCost;
+	private long cartId;
+	private long userId;
+	private Date puchaseDate;
+	private long totalCost;
+	private boolean isBuyed;
 
 	public UserHistory() {
 		
@@ -49,8 +50,14 @@ public class UserHistory {
 		this.totalCost = totalCost;
 	}
 
-	
-	//TODO implement eqauls() and hashCode() methods
+	public boolean isBuyed() {
+		return isBuyed;
+	}
+
+	public void setBuyed(boolean isBuyed) {
+		this.isBuyed = isBuyed;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

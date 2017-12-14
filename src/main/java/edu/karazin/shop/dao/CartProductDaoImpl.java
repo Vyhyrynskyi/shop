@@ -3,9 +3,12 @@ package edu.karazin.shop.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
+
 import edu.karazin.shop.entity.CartProduct;
 import edu.karazin.shop.entity.CartProductPrimaryKey;
 
+@Repository
 public class CartProductDaoImpl implements CartProductDao {
 	
 	@PersistenceContext
