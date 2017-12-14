@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import edu.karazin.shop.entity.CartProduct;
+import edu.karazin.shop.entity.CartProductPrimaryKey;
 
 public class CartProductDaoImpl implements CartProductDao {
 	
@@ -11,33 +12,28 @@ public class CartProductDaoImpl implements CartProductDao {
 	private EntityManager em;
 	
 	@Override
-	public CartProduct getCartProduct(long productId, long cartId) {
-		// TODO Auto-generated method stub
-		return null;
+	public CartProduct getCartProduct(long cartId, long productId) {
+		return em.find(CartProduct.class, new CartProductPrimaryKey(cartId, productId));
 	}
 
 	@Override
-	public void addCartProduct(CartProduct cartProduct) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateCartProduct(CartProduct cartProduct) {
-		// TODO Auto-generated method stub
-
+	public CartProduct saveCartProduct(CartProduct cartProduct) {
+		if (!em.contains(cartProduct)) {
+			return em.merge(cartProduct);
+		} else {
+			em.persist(cartProduct);
+			return cartProduct;
+		}
 	}
 
 	@Override
 	public void removeCartProduct(CartProduct cartProduct) {
-		// TODO Auto-generated method stub
-
+		em.remove(cartProduct);
 	}
 
 	@Override
 	public void removeAllProductsFromCart(long cartId) {
-		// TODO Auto-generated method stub
-		
+		em.createQuery("delete from CartProduct where cartId = :cartId").setParameter("cartId", cartId);
 	}
 
 }

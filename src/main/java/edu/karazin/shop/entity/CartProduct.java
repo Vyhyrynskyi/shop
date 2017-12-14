@@ -1,26 +1,32 @@
 package edu.karazin.shop.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.IdClass;
 
 @Entity
-@Table(name = "CartProduct", uniqueConstraints = { @UniqueConstraint(columnNames = { "cartId", "productId" }) })
+//@Table(name = "CartProduct", uniqueConstraints = { @UniqueConstraint(columnNames = { "cartId", "productId" }) })
+@IdClass(CartProductPrimaryKey.class)
 public class CartProduct {
 	@Id
-	@GeneratedValue
-	@Column (name= "cartId", unique= false)
 	private long cartId;
-	//@Id
+	@Id
 	private long productId;
 	private long purchasePrice;
 	private long purchaseNumber;
 
 	public CartProduct() {
 
+	}
+	public CartProduct(long cartId, long productId) {
+		this.cartId = cartId;
+		this.productId = productId;
+	}
+	
+	public CartProduct(long cartId, long productId, long purchaseNumber) {
+		this.cartId = cartId;
+		this.productId = productId;
+		this.purchaseNumber = purchaseNumber;
 	}
 
 	public long getCartId() {
@@ -55,9 +61,35 @@ public class CartProduct {
 		this.purchaseNumber = purchaseNumber;
 	}
 
-	// TODO implement equals() and hashCode() methods
-	/*
-	 * @Override public boolean equals(Object obj){ return false; }
-	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (cartId ^ (cartId >>> 32));
+		result = prime * result + (int) (productId ^ (productId >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		CartProduct other = (CartProduct) obj;
+		if (cartId != other.cartId) {
+			return false;
+		}
+		if (productId != other.productId) {
+			return false;
+		}
+		return true;
+	}
+
 
 }

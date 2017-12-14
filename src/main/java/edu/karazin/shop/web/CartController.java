@@ -35,16 +35,16 @@ public class CartController {
 	//FIXME fix product adding to cart
 	@RequestMapping(method = RequestMethod.GET, params = "add")
 	public String addProduct(@RequestParam("prodId") Long prodId, @RequestParam("amount") Long productsAmount, Model model) {
-		Product currentProduct = productService.getProduct(prodId);
-		long purchasePrice = currentProduct.getCost();
+		//Product currentProduct = productService.getProduct(prodId);
+		//long purchasePrice = currentProduct.getCost();
 		//CartProduct cartProduct = new CartProduct(currentProduct, purchasePrice);
-		cartStore.addProduct(currentProduct);
+		//cartStore.addProduct(currentProduct);
 		return list(model);
 	}
 	//FIXME fix removing from cart
 	@RequestMapping(method = RequestMethod.GET, params = "delete")
 	public String removeProduct(@RequestParam("prodId") Long prodId, Model model) {
-		cartStore.removeProduct(productService.getProduct(prodId));
+		//cartStore.removeProduct(productService.getProduct(prodId));
 		return list(model);
 	}
 }

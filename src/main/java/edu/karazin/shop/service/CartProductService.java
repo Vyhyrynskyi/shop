@@ -3,7 +3,7 @@ package edu.karazin.shop.service;
 import edu.karazin.shop.entity.CartProduct;
 
 public interface CartProductService {
-	public CartProduct getCartProduct(long productId, long cartId);
+	public CartProduct getCartProduct(long cartId, long productId);
 
 	/**
 	 * Adds product to the cart.
@@ -25,9 +25,9 @@ public interface CartProductService {
 	 * @return false, if total number of product to purchase is greater than product
 	 *         balance, otherwise, true.
 	 */
-	public boolean addCartProduct(long productId, long cartId, long purchaseNumber);
+	public boolean addCartProduct(long cartId, long productId, long purchaseNumber);
 
-	public void removeCartProduct(long productId, long cartId);
+	public void removeCartProduct(long cartId, long productId);
 
-	public void refreshPrice(long productId, long cartId);
+	public void refreshPrice(CartProduct cartProduct);
 }
